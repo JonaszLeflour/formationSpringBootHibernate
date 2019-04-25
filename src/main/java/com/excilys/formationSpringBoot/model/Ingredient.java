@@ -38,6 +38,10 @@ public class Ingredient {
 		name = builder.name;
 	}
 	
+	public static Builder getBuilder() {
+		return new Builder();
+	}
+	
 	public static class Builder {
 		Long id;
 		String name;

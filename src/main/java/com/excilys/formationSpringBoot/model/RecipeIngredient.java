@@ -23,6 +23,10 @@ public class RecipeIngredient {
 		unit = builder.unit;
 	}
 	
+	public static Builder getBuilder() {
+		return new Builder();
+	}
+	
 	public static class Builder {
 		Long id;
 		Ingredient ingredient;

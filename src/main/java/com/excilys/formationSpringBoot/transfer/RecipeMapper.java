@@ -2,9 +2,8 @@ package com.excilys.formationSpringBoot.transfer;
 import java.util.stream.Collectors;
 import com.excilys.formationSpringBoot.model.Recipe;
 
-public class RecipeMapper implements Mapper<Recipe, RecipeDTO>{
-	@Override
-	public RecipeDTO toDTO(Recipe recipe) {
+public class RecipeMapper {
+	public static RecipeDTO toDTO(Recipe recipe) {
 		RecipeDTO recipeDTO = new RecipeDTO();
 		recipeDTO.id = recipe.getId().toString();
 		recipeDTO.description = recipe.getDescription();
@@ -13,10 +12,8 @@ public class RecipeMapper implements Mapper<Recipe, RecipeDTO>{
 		recipeDTO.picture = recipe.getPicture();
 		return recipeDTO;
 	}
-	@Override
-	public Recipe toModel(RecipeDTO recipeDTO) {
-		RecipeIngredientMapper riMapper = new RecipeIngredientMapper();
-		
+	
+	public static Recipe toModel(RecipeDTO recipeDTO) {
 		return new Recipe(Recipe.getBuilder()
 					.description(recipeDTO.description)
 					.id(Long.getLong(recipeDTO.id))
@@ -24,7 +21,7 @@ public class RecipeMapper implements Mapper<Recipe, RecipeDTO>{
 					.instructions(recipeDTO.instructions.stream().collect(Collectors.toSet()))
 					.picture(recipeDTO.picture)
 					.recipeIngredient(recipeDTO.recipeIngredient.stream()
-							.map(dto -> riMapper.toModel(dto)).collect(Collectors.toSet()))
+							.map(dto -> RecipeIngredientMapper.toModel(dto)).collect(Collectors.toSet()))
 				);
 	}
 }
