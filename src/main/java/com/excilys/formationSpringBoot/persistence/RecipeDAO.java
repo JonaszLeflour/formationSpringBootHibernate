@@ -30,22 +30,23 @@ public class RecipeDAO {
 		return sessionFactory;
 	}
 	
-	Session openSession() {
+	private Session openSession() {
 		return currentSession = getSessionFactory().openSession();
 	}
 	
-	Transaction openSessionWithTransaction() {
+	@SuppressWarnings("unused")
+	private Transaction openSessionWithTransaction() {
 		return currentTransaction = openSession().beginTransaction();
 	}
 	
-	List<Recipe> getAllRecipies() {
+	public List<Recipe> getAllRecipies() {
 		openSession();
 		@SuppressWarnings("unchecked")
 		Query<Recipe> query = currentSession.createQuery(GET_ALL_QUERY);
 		return query.list();
 	}
 	
-	Recipe getRecipyByid(Long id){
+	public Recipe getRecipyByid(Long id){
 		openSession();
 		@SuppressWarnings("unchecked")
 		Query<Recipe> query = currentSession.createQuery(GET_BY_ID_QUERY);
