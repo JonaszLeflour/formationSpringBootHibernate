@@ -14,6 +14,43 @@ public class RecipeIngredient {
 	Ingredient ingredient;
 	Long quantity;
 	String unit;
+	
+	public RecipeIngredient () {};
+	public RecipeIngredient (Builder builder) {
+		id = builder.id;
+		ingredient = builder.ingredient;
+		quantity = builder.quantity;
+		unit = builder.unit;
+	}
+	
+	public static class Builder {
+		Long id;
+		Ingredient ingredient;
+		Long quantity;
+		String unit;
+		
+		public Builder id(Long id) {
+			this.id = id;
+			return this;
+		}
+		
+		public Builder ingredient(Ingredient ingredient) {
+			this.ingredient = ingredient;
+			return this;
+		}
+		
+		public Builder quantity(Long quantity) {
+			this.quantity = quantity;
+			return this;
+		}
+		
+		public Builder unit(String unit) {
+			this.unit = unit;
+			return this;
+		}
+		
+	}
+	
 	@Id
 	@GeneratedValue
 	@Column(name="id")
