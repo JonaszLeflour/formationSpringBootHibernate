@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.excilys.formationSpringBoot.persistence.RecipeDAO;
 import com.excilys.formationSpringBoot.transfer.RecipeDTO;
 import com.excilys.formationSpringBoot.transfer.RecipeMapper;
 
+@Service
 public class RecipeService 	{
 	
 	RecipeDAO dao;
